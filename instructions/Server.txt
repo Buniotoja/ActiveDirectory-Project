@@ -21,6 +21,9 @@ Installing Active Directory Domain Services # domain ".local" in case local netw
 
 Creating Active Directory Organization Unit
 > New-ADOrganizationUnit -Name "OUNAME" -Path "DC=DOMAIN_NAME,DC=local"
+Deleting OU
+> Set-ADOrganizationalUnit -Identity "PATH" -ProtectedFromAccidentalDeletion $false
+> Remove ADOrganizationalUnit -Identity "PATH"
 
 Creating Active Directory user
 > New-ADUser -Name "FULLNAME" -GivenName "NAME" -Surname "SURNAME" -SamAccountName "USERNAME" -UserPrincipalName "USERNAME@DOMAIN.local" -AccountPassword (ReadHost -AsSecureString "Enter your password") -Enabled $true -Path "CN=Users,OU=OUNAME,DC=DOMAIN_NAME,DC=local"
